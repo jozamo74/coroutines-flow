@@ -23,9 +23,27 @@ fun main() {
 //
 //    threads()
 
-    coroutinesVsThreads()
+    //coroutinesVsThreads()
+
+    sequences()
 
 
+}
+
+fun sequences() {
+    newTopic("Sequences")
+    getDatabySeq().forEach { println("${it}º") }
+}
+
+fun getDatabySeq(): Sequence<Float> {
+    return sequence {
+        (1..5).forEach {
+            println("Procesando datos....")
+            Thread.sleep(someTime())
+            yield(20 + it + Random.nextFloat())
+
+        }
+    }
 }
 
 
